@@ -1,0 +1,428 @@
+[gd_scene load_steps=11 format=3]
+
+[ext_resource type="Script" path="res://addons/webworks/ui/bootstrap.gd" id="1_boot"]
+
+[sub_resource type="StyleBoxFlat" id="StylePanel"]
+content_margin_left = 30.0
+content_margin_top = 26.0
+content_margin_right = 30.0
+content_margin_bottom = 26.0
+bg_color = Color(0.07, 0.055, 0.06, 0.98)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.17, 0.14, 0.15, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleField"]
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+bg_color = Color(0.106, 0.086, 0.09, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.29, 0.11, 0.13, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleFieldFocus"]
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+bg_color = Color(0.125, 0.1, 0.105, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.92, 0.16, 0.2, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StylePrimary"]
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.8, 0.078, 0.14, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StylePrimaryHover"]
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.92, 0.16, 0.2, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StylePrimaryPressed"]
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.68, 0.06, 0.11, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleGhost"]
+content_margin_left = 12.0
+content_margin_top = 9.0
+content_margin_right = 12.0
+content_margin_bottom = 9.0
+bg_color = Color(1, 1, 1, 0.04)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleScroll"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0, 0, 0, 0.22)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.05)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleFlatButton"]
+content_margin_left = 10.0
+content_margin_top = 6.0
+content_margin_right = 10.0
+content_margin_bottom = 6.0
+bg_color = Color(1, 1, 1, 0.05)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="Bootstrap" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_boot")
+
+[node name="Backdrop" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.024, 0.014, 0.018, 1)
+
+[node name="Center" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="Center"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StylePanel")
+
+[node name="Root" type="VBoxContainer" parent="Center/Panel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Wordmark" type="Label" parent="Center/Panel/Root"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.68, 0.63, 0.63, 1)
+theme_override_font_sizes/font_size = 11
+text = "WEBWORKS"
+horizontal_alignment = 1
+
+[node name="TitleLabel" type="Label" parent="Center/Panel/Root"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "SIGN IN"
+horizontal_alignment = 1
+
+[node name="EntryPage" type="VBoxContainer" parent="Center/Panel/Root"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="AccountFields" type="VBoxContainer" parent="Center/Panel/Root/EntryPage"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="UsernameInput" type="LineEdit" parent="Center/Panel/Root/EntryPage/AccountFields"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_colors/font_placeholder_color = Color(0.45, 0.4, 0.4, 1)
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleField")
+theme_override_styles/focus = SubResource("StyleFieldFocus")
+placeholder_text = "Username"
+caret_blink = true
+
+[node name="PasswordInput" type="LineEdit" parent="Center/Panel/Root/EntryPage/AccountFields"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_colors/font_placeholder_color = Color(0.45, 0.4, 0.4, 1)
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleField")
+theme_override_styles/focus = SubResource("StyleFieldFocus")
+placeholder_text = "Password"
+secret = true
+caret_blink = true
+
+[node name="DisplayNameRow" type="VBoxContainer" parent="Center/Panel/Root/EntryPage/AccountFields"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="DisplayNameInput" type="LineEdit" parent="Center/Panel/Root/EntryPage/AccountFields/DisplayNameRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_colors/font_placeholder_color = Color(0.45, 0.4, 0.4, 1)
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleField")
+theme_override_styles/focus = SubResource("StyleFieldFocus")
+placeholder_text = "Display name (optional)"
+
+[node name="SignInButton" type="Button" parent="Center/Panel/Root/EntryPage/AccountFields"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StylePrimary")
+theme_override_styles/hover = SubResource("StylePrimaryHover")
+theme_override_styles/pressed = SubResource("StylePrimaryPressed")
+text = "Sign In"
+
+[node name="SignInStatus" type="Label" parent="Center/Panel/Root/EntryPage/AccountFields"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 18)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.58, 0.53, 0.53, 1)
+theme_override_font_sizes/font_size = 12
+text = ""
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ModeToggle" type="Button" parent="Center/Panel/Root/EntryPage/AccountFields"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0.92, 0.16, 0.2, 1)
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleFlatButton")
+theme_override_styles/hover = SubResource("StyleFlatButton")
+theme_override_styles/pressed = SubResource("StyleFlatButton")
+text = "Need an account? Register"
+
+[node name="Divider" type="HSeparator" parent="Center/Panel/Root/EntryPage/AccountFields"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="GuestLabel" type="Label" parent="Center/Panel/Root/EntryPage/AccountFields"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.45, 0.4, 0.4, 1)
+theme_override_font_sizes/font_size = 10
+text = "OR CONTINUE AS GUEST"
+horizontal_alignment = 1
+
+[node name="GuestInput" type="LineEdit" parent="Center/Panel/Root/EntryPage"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_colors/font_placeholder_color = Color(0.45, 0.4, 0.4, 1)
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleField")
+theme_override_styles/focus = SubResource("StyleFieldFocus")
+placeholder_text = "Display name"
+
+[node name="GuestButton" type="Button" parent="Center/Panel/Root/EntryPage"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.16, 0.2, 1)
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleGhost")
+theme_override_styles/hover = SubResource("StyleFlatButton")
+theme_override_styles/pressed = SubResource("StyleFlatButton")
+text = "Continue as Guest"
+
+[node name="GuestStatus" type="Label" parent="Center/Panel/Root/EntryPage"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 18)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.58, 0.53, 0.53, 1)
+theme_override_font_sizes/font_size = 12
+text = ""
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="FriendsPage" type="VBoxContainer" parent="Center/Panel/Root"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="FriendsTitle" type="Label" parent="Center/Panel/Root/FriendsPage"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "YOUR FRIENDS"
+horizontal_alignment = 1
+
+[node name="FriendsHeader" type="HBoxContainer" parent="Center/Panel/Root/FriendsPage"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="FriendsWho" type="Label" parent="Center/Panel/Root/FriendsPage/FriendsHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.58, 0.53, 0.53, 1)
+theme_override_font_sizes/font_size = 12
+text = "Signed in as"
+horizontal_alignment = 1
+
+[node name="LiveDot" type="ColorRect" parent="Center/Panel/Root/FriendsPage/FriendsHeader"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 2
+size_flags_vertical = 4
+color = Color(0.43, 0.86, 0.55, 1)
+
+[node name="ScrollFrame" type="PanelContainer" parent="Center/Panel/Root/FriendsPage"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleScroll")
+
+[node name="Scroll" type="ScrollContainer" parent="Center/Panel/Root/FriendsPage/ScrollFrame"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="FriendList" type="VBoxContainer" parent="Center/Panel/Root/FriendsPage/ScrollFrame/Scroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="FriendsSummary" type="Label" parent="Center/Panel/Root/FriendsPage"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 18)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.58, 0.53, 0.53, 1)
+theme_override_font_sizes/font_size = 12
+text = ""
+horizontal_alignment = 1
+
+[node name="AddRow" type="HBoxContainer" parent="Center/Panel/Root/FriendsPage"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="AddFriendInput" type="LineEdit" parent="Center/Panel/Root/FriendsPage/AddRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_colors/font_placeholder_color = Color(0.45, 0.4, 0.4, 1)
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleField")
+theme_override_styles/focus = SubResource("StyleFieldFocus")
+placeholder_text = "Add a friend by username"
+
+[node name="AddFriendButton" type="Button" parent="Center/Panel/Root/FriendsPage/AddRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.16, 0.2, 1)
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleFlatButton")
+theme_override_styles/hover = SubResource("StyleGhost")
+theme_override_styles/pressed = SubResource("StyleFlatButton")
+text = "Add friend"
+
+[node name="FriendsStatus" type="Label" parent="Center/Panel/Root/FriendsPage"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 18)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.58, 0.53, 0.53, 1)
+theme_override_font_sizes/font_size = 12
+text = ""
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ContinueButton" type="Button" parent="Center/Panel/Root/FriendsPage"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StylePrimary")
+theme_override_styles/hover = SubResource("StylePrimaryHover")
+theme_override_styles/pressed = SubResource("StylePrimaryPressed")
+text = "Continue to game"
+
+[node name="SignOutButton" type="Button" parent="Center/Panel/Root/FriendsPage"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0.58, 0.53, 0.53, 1)
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleFlatButton")
+theme_override_styles/hover = SubResource("StyleFlatButton")
+theme_override_styles/pressed = SubResource("StyleFlatButton")
+text = "Use a different account"
+
+[node name="EntryService" type="Label" parent="Center/Panel/Root"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.42, 0.38, 0.38, 1)
+theme_override_font_sizes/font_size = 11
+text = "Account service:"
+horizontal_alignment = 1

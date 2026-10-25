@@ -1,0 +1,23 @@
+{
+  "gwasUrl": "https://gwas.webeam.workers.dev",
+  "host": "0.0.0.0",
+  "port": 3000,
+  "dataDir": "./data",
+  "corsOrigin": "*",
+  "log": "normal",
+  "sessionDays": 30,
+  "serverToken": "",
+  "publicTunnel": "",
+  "tunnelAllowAny": false,
+  "tunnelAllowPrivate": false,
+  "tunnelAllow": [],
+  "tunnelMaxStreams": 32,
+  "federationPublicUrl": "",
+  "federationUrl": "https://gwas.webeam.workers.dev",
+  "federationBridgePath": "/federation/bridge",
+  "federationHeartbeatMs": 120000,
+  "federationLinkIdleMs": 180000,
+  "federationMaxLinks": 64,
+  "federationAllowedHosts": [],
+  "federationAllowInsecure": false
+}

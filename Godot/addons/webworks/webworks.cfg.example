@@ -1,0 +1,24 @@
+# Copy this file next to your project.godot as webworks.cfg (or to user://webworks.cfg to
+# keep it out of version control). The same file the Unity and Unreal shims read.
+#
+# Values are quoted on purpose: Godot's ConfigFile parser stops at an unquoted "//" and
+# the server URL then silently falls back to the default.
+#
+# server_url   the Webworks server players connect to, without a trailing slash
+# app_id       your game's app id; lobbies, stats and accounts are stored per app id
+# engine_path  which mount this project talks to; Godot/GodotSteam is the default
+# timeout_ms   per-request timeout, in milliseconds
+# persona_name the name a guest session asks for; leave empty to let the server pick
+#
+# [steam] auto_init  the Steam shim opens its own session on startup; set to false to
+#                    call Steam.init() from your own menu instead
+
+[webworks]
+server_url="http://localhost:3000"
+app_id="480"
+engine_path="Godot/GodotSteam"
+timeout_ms=8000
+persona_name=""
+
+[steam]
+auto_init=true

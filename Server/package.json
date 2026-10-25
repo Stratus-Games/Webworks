@@ -1,0 +1,20 @@
+{
+  "name": "webworks-server",
+  "version": "1.1.0",
+  "description": "Webworks - self-hosted Steamworks-compatible backend with Local Accounts and GWAS support",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node --test test/*.test.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "ws": "^8.18.0",
+    "uuid": "^9.0.1"
+  }
+}

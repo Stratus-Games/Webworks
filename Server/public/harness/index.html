@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Webworks function tester</title>
+<link rel="stylesheet" href="harness.css">
+</head>
+<body>
+<div id="stage">
+
+  <!-- Step 1 of the bootstrap: the same name/account screen the Unity scene draws. -->
+  <section id="screen-entry" class="screen">
+    <div class="backdrop"></div>
+    <div class="glow"></div>
+    <div class="panel" id="entry-panel">
+      <div class="accent-bar"></div>
+      <div class="brand-mark">
+        <img class="logo" src="logo.png" alt="">
+        <span class="wordmark">WEBWORKS</span>
+      </div>
+      <h1 id="entry-title">SIGN IN</h1>
+      <p class="panel-sub" id="entry-sub">One account, every game.</p>
+
+      <div id="account-fields">
+        <label class="field">
+          <span class="field-label">Username</span>
+          <input id="username" type="text" placeholder="your name" autocomplete="username" spellcheck="false">
+        </label>
+        <label class="field">
+          <span class="field-label">Password</span>
+          <input id="password" type="password" placeholder="••••••••" autocomplete="current-password">
+        </label>
+        <label class="field hidden" id="display-name-field">
+          <span class="field-label">Display name</span>
+          <input id="display-name" type="text" placeholder="optional" spellcheck="false">
+        </label>
+        <div class="avatar-row hidden" id="avatar-row">
+          <div class="avatar-frame"><img id="avatar-preview" alt=""></div>
+          <div class="avatar-controls">
+            <button type="button" class="avatar-pick" id="pick-avatar">Choose account icon</button>
+            <span class="avatar-note" id="avatar-note">PNG, JPEG or WebP.</span>
+          </div>
+          <input id="avatar-file" type="file" accept="image/png,image/jpeg,image/webp" hidden>
+        </div>
+
+        <button type="button" class="primary-btn" id="signin-btn">Sign In</button>
+        <p class="status" id="signin-status"></p>
+        <button type="button" class="link-btn" id="mode-toggle">Need an account? Register</button>
+
+        <div class="divider"><span>OR CONTINUE AS GUEST</span></div>
+      </div>
+
+      <label class="field">
+        <span class="field-label">Guest name</span>
+        <input id="guest-name" type="text" placeholder="Display name" maxlength="20" spellcheck="false">
+      </label>
+      <button type="button" class="guest-btn" id="guest-btn">Continue as Guest</button>
+      <p class="status" id="guest-status"></p>
+    </div>
+    <p class="entry-foot"><span class="live-dot"></span> Account service: <span id="entry-mode">checking…</span></p>
+  </section>
+
+  <!-- Step 2: only for accounts, exactly like the Unity bootstrap's friends page. -->
+  <section id="screen-friends" class="screen hidden">
+    <div class="backdrop"></div>
+    <div class="glow"></div>
+    <div class="panel friends-panel">
+      <div class="accent-bar"></div>
+      <div class="brand-mark">
+        <img class="logo" src="logo.png" alt="">
+        <span class="wordmark">WEBWORKS</span>
+      </div>
+      <h1>YOUR FRIENDS</h1>
+      <p class="signed-in">Signed in as <span id="friends-who"></span><span class="live-dot" id="friends-live" title="Live updates"></span></p>
+
+      <div class="invite-list hidden" id="invite-list"></div>
+
+      <div class="friend-list" id="friend-list">
+        <p class="empty">Loading friends…</p>
+      </div>
+      <p class="summary" id="friends-summary"></p>
+
+      <div class="add-row">
+        <label class="field grow">
+          <span class="field-label">Add by username</span>
+          <input id="add-friend" type="text" placeholder="their username" spellcheck="false">
+        </label>
+        <button type="button" class="add-btn" id="add-friend-btn">Add friend</button>
+      </div>
+      <p class="status" id="friends-status"></p>
+
+      <button type="button" class="primary-btn" id="continue-btn">Continue to game</button>
+      <button type="button" class="link-btn muted" id="signout-btn">Use a different account</button>
+    </div>
+  </section>
+
+  <!-- The tester itself. -->
+  <section id="screen-harness" class="screen hidden">
+    <header class="topbar">
+      <div class="brand">
+        <strong>WEBWORKS</strong>
+        <span class="muted" id="whoami"></span>
+      </div>
+      <nav class="tabs">
+        <button type="button" data-tab="console" class="tab active">API console</button>
+        <button type="button" data-tab="game" class="tab">Multiplayer</button>
+        <button type="button" data-tab="status" class="tab">Server</button>
+      </nav>
+      <button type="button" class="ghost" id="harness-signout">Sign out</button>
+    </header>
+
+    <main>
+      <section class="pane" id="pane-console">
+        <aside class="groups" id="groups"></aside>
+        <div class="console">
+          <div class="endpoints" id="endpoints"></div>
+          <div class="response">
+            <div class="response-head">
+              <span>Response</span>
+              <span class="muted" id="response-meta">nothing sent yet</span>
+              <button type="button" class="ghost small" id="copy-response">Copy</button>
+            </div>
+            <pre id="response-body">Pick a call and press Run. Requests go to this server with the session this page created.</pre>
+          </div>
+        </div>
+      </section>
+
+      <section class="pane hidden" id="pane-game">
+        <div class="game-wrap">
+          <div class="game-side">
+            <h2>Arena</h2>
+            <p class="muted">A small 3D game built on Webworks lobbies and realtime chat. Open this page in two tabs or on two machines, join the same room, and move with WASD.</p>
+            <div class="game-controls">
+              <button type="button" class="primary-btn" id="create-room">Create a room</button>
+              <div class="add-row">
+                <label class="field grow"><span class="field-label">Room code</span><input id="join-code" placeholder="lobby id" spellcheck="false"></label>
+                <button type="button" class="add-btn" id="join-room">Join</button>
+              </div>
+              <button type="button" class="link-btn muted" id="leave-room">Leave room</button>
+            </div>
+            <p class="status" id="game-status"></p>
+
+            <div class="scoreboard">
+              <h3>Players <span class="muted" id="game-count"></span></h3>
+              <ul class="players" id="player-list"></ul>
+            </div>
+
+            <h3>Chat</h3>
+            <div class="chat-log" id="chat-log"></div>
+            <div class="add-row">
+              <label class="field grow"><input id="chat-input" placeholder="Say something" maxlength="200"></label>
+              <button type="button" class="add-btn" id="chat-send">Send</button>
+            </div>
+          </div>
+          <div class="game-main">
+            <div class="game-head">
+              <span class="pill" id="game-room">not in a room</span>
+              <span class="hud">
+                <span class="hud-item">Score <strong id="game-score">0</strong></span>
+                <span class="hud-item">Ping <strong id="game-ping">—</strong></span>
+                <span class="hud-item"><span class="socket-dot" id="game-socket-dot"></span><span id="game-socket">not connected</span></span>
+              </span>
+            </div>
+            <div class="canvas-frame">
+              <canvas id="arena" width="960" height="600"></canvas>
+            </div>
+            <p class="muted small">Collect the gold gem. Positions, pickups, pings and chat all travel over the Webworks realtime socket, inside the room you joined.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="pane hidden" id="pane-status">
+        <div class="status-grid">
+          <div class="status-card">
+            <h2>This server</h2>
+            <pre id="health-json">loading…</pre>
+            <button type="button" class="ghost" id="refresh-health">Refresh</button>
+          </div>
+          <div class="status-card">
+            <h2>What the tester is using</h2>
+            <dl id="session-facts"></dl>
+          </div>
+        </div>
+      </section>
+    </main>
+  </section>
+</div>
+
+<script src="game.js"></script>
+<script src="harness.js"></script>
+</body>
+</html>

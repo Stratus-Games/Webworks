@@ -1,0 +1,300 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://addons/webworks/ui/steam_overlay.gd" id="1_overlay"]
+
+[sub_resource type="StyleBoxFlat" id="StylePanel"]
+content_margin_left = 26.0
+content_margin_top = 22.0
+content_margin_right = 26.0
+content_margin_bottom = 22.0
+bg_color = Color(0.07, 0.055, 0.06, 0.99)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2, 0.16, 0.17, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.6)
+shadow_size = 28
+
+[sub_resource type="StyleBoxFlat" id="StyleTabPanel"]
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+bg_color = Color(0.055, 0.045, 0.05, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.15, 0.12, 0.13, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="SteamOverlay" type="Control"]
+visible = false
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+z_index = 100
+script = ExtResource("1_overlay")
+
+[node name="Dim" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.015, 0.012, 0.014, 0.72)
+
+[node name="Center" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="Center"]
+custom_minimum_size = Vector2(760, 500)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StylePanel")
+
+[node name="Margin" type="MarginContainer" parent="Center/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Layout" type="VBoxContainer" parent="Center/Panel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Header" type="HBoxContainer" parent="Center/Panel/Margin/Layout"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="Center/Panel/Margin/Layout/Header"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.95, 0.95, 1)
+theme_override_font_sizes/font_size = 20
+text = "Webworks"
+
+[node name="Service" type="Label" parent="Center/Panel/Margin/Layout/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.55, 0.5, 0.5, 1)
+theme_override_font_sizes/font_size = 11
+text = "http://localhost:3000"
+horizontal_alignment = 2
+
+[node name="Close" type="Button" parent="Center/Panel/Margin/Layout/Header"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(78, 30)
+layout_mode = 2
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_font_sizes/font_size = 13
+text = "Close"
+
+[node name="Tabs" type="TabContainer" parent="Center/Panel/Margin/Layout"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleTabPanel")
+
+[node name="Friends" type="VBoxContainer" parent="Center/Panel/Margin/Layout/Tabs"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="FriendsBar" type="HBoxContainer" parent="Center/Panel/Margin/Layout/Tabs/Friends"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="FriendsSummary" type="Label" parent="Center/Panel/Margin/Layout/Tabs/Friends/FriendsBar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.72, 0.68, 0.68, 1)
+theme_override_font_sizes/font_size = 12
+text = "0 of 0 friends online"
+
+[node name="FriendsRefresh" type="Button" parent="Center/Panel/Margin/Layout/Tabs/Friends/FriendsBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(88, 28)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 12
+text = "Refresh"
+
+[node name="FriendsScroll" type="ScrollContainer" parent="Center/Panel/Margin/Layout/Tabs/Friends"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="FriendsList" type="VBoxContainer" parent="Center/Panel/Margin/Layout/Tabs/Friends/FriendsScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="FriendsStatus" type="Label" parent="Center/Panel/Margin/Layout/Tabs/Friends"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.35, 0.38, 1)
+theme_override_font_sizes/font_size = 11
+text = ""
+autowrap_mode = 2
+
+[node name="Invites" type="VBoxContainer" parent="Center/Panel/Margin/Layout/Tabs"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="InvitesBar" type="HBoxContainer" parent="Center/Panel/Margin/Layout/Tabs/Invites"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="InvitesSummary" type="Label" parent="Center/Panel/Margin/Layout/Tabs/Invites/InvitesBar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.72, 0.68, 0.68, 1)
+theme_override_font_sizes/font_size = 12
+text = "0 pending"
+
+[node name="InvitesRefresh" type="Button" parent="Center/Panel/Margin/Layout/Tabs/Invites/InvitesBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(88, 28)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 12
+text = "Refresh"
+
+[node name="InvitesScroll" type="ScrollContainer" parent="Center/Panel/Margin/Layout/Tabs/Invites"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="InviteList" type="VBoxContainer" parent="Center/Panel/Margin/Layout/Tabs/Invites/InvitesScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="InvitesStatus" type="Label" parent="Center/Panel/Margin/Layout/Tabs/Invites"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.35, 0.38, 1)
+theme_override_font_sizes/font_size = 11
+text = ""
+autowrap_mode = 2
+
+[node name="Achievements" type="VBoxContainer" parent="Center/Panel/Margin/Layout/Tabs"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="AchievementsBar" type="HBoxContainer" parent="Center/Panel/Margin/Layout/Tabs/Achievements"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="AchievementsSummary" type="Label" parent="Center/Panel/Margin/Layout/Tabs/Achievements/AchievementsBar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.72, 0.68, 0.68, 1)
+theme_override_font_sizes/font_size = 12
+text = "0 of 0 unlocked"
+
+[node name="AchievementsRefresh" type="Button" parent="Center/Panel/Margin/Layout/Tabs/Achievements/AchievementsBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(88, 28)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 12
+text = "Refresh"
+
+[node name="AchievementsScroll" type="ScrollContainer" parent="Center/Panel/Margin/Layout/Tabs/Achievements"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="AchievementList" type="VBoxContainer" parent="Center/Panel/Margin/Layout/Tabs/Achievements/AchievementsScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="AchievementsStatus" type="Label" parent="Center/Panel/Margin/Layout/Tabs/Achievements"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.68, 0.68, 1)
+theme_override_font_sizes/font_size = 11
+text = ""
+autowrap_mode = 2
+
+[node name="Settings" type="VBoxContainer" parent="Center/Panel/Margin/Layout/Tabs"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Persona" type="Label" parent="Center/Panel/Margin/Layout/Tabs/Settings"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.88, 0.88, 1)
+theme_override_font_sizes/font_size = 13
+text = "Persona:"
+autowrap_mode = 2
+
+[node name="Account" type="Label" parent="Center/Panel/Margin/Layout/Tabs/Settings"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.88, 0.88, 1)
+theme_override_font_sizes/font_size = 13
+text = "Account:"
+autowrap_mode = 2
+
+[node name="Server" type="Label" parent="Center/Panel/Margin/Layout/Tabs/Settings"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.62, 0.58, 0.58, 1)
+theme_override_font_sizes/font_size = 12
+text = "Server:"
+autowrap_mode = 2
+
+[node name="SettingsButtons" type="HBoxContainer" parent="Center/Panel/Margin/Layout/Tabs/Settings"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="AccountPage" type="Button" parent="Center/Panel/Margin/Layout/Tabs/Settings/SettingsButtons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 32)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 12
+text = "Open account page"
+
+[node name="SignOut" type="Button" parent="Center/Panel/Margin/Layout/Tabs/Settings/SettingsButtons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 32)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 12
+text = "Sign out"
