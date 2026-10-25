@@ -6,7 +6,6 @@ Self-hosted backend for Steamworks-style features, with drop-in shims for Unity
 | Path | What it is |
 | --- | --- |
 | `Server/` | The Node.js server |
-| `GWAS/` | Accounts and the lobby directory, as one Cloudflare Worker |
 | `Unity/Webworks.SteamworksNET/` | Steamworks.NET-shaped shim |
 | `Unity/Webworks.Facepunch/` | Facepunch.Steamworks-shaped shim |
 | `Unreal/WebworksSteam/` | Unreal Engine 5 plugin |
