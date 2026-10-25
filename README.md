@@ -66,18 +66,7 @@ http://localhost:3000/test        browser function tester and HTML5 arena
 ws://localhost:3000/realtime      realtime channel for every shim
 ```
 
-## 2. Deploy the GWAS worker
 
-One worker serves both accounts and the lobby directory.
-
-```bash
-cd GWAS
-npx wrangler login
-npx wrangler d1 create gwas                # first install only; copy database_id into wrangler.jsonc
-npx wrangler d1 execute gwas --remote --file=schema.sql
-npx wrangler secret put GWAS_SECRET
-npx wrangler deploy
-```
 
 Point the server at it and restart:
 
