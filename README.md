@@ -15,8 +15,7 @@ Self-hosted backend for Steamworks-style features, with drop-in shims for Unity
 ## Requirements
 
 - Node.js 18 or newer for the server.
-- Accounts use the public GWAS worker at `https://gwas.webeam.workers.dev` by default. Deploy
-  your own with section 2 if you want your own account service.
+- Accounts use the public GWAS worker at `https://gwas.webeam.workers.dev` by default. 
 - Optional: a Cloudflare tunnel for players outside your network.
 
 ## 1. Host the server
